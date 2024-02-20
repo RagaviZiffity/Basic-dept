@@ -1,0 +1,625 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /*in default padding and border are included in the width and height*/
+}
+
+:root {
+    --font-nav: 'Fira Sans Condensed', sans-serif;
+    --font-normal: 'Nunito sans','sans-serif';
+
+    --tuatara: #252422;
+    --white: #fff;
+    --azalea: #f9cdcd;
+    --light-color: #f4f4f4;
+}
+
+body{
+    font-family: var(--font-normal);
+    scroll-behavior: smooth;
+    background-color: var(--light-color);
+    transition: 0.4s ease;
+}
+
+/* .bodyColorChange{
+    background-color: var(--tuatara);
+    color: var(--pink-color)
+} */
+
+ul {
+    list-style-type: none;
+}
+
+/* header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(1.5rem + 2.5vw) 5.4vw; /*1.5 rem ensures, even the responsive width and height changes a base paading will present between elements*/
+    color: var(--white);
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+
+header .header__logo {
+    width: 10rem;
+    height: 1.5rem;
+    color: var(--white);
+}
+
+header .header__logo svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+}
+
+header nav {
+    margin-right: 8.4rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--tuatara);
+    color: var(--azalea);
+    padding: calc(1.5rem + 2.5vw) 5.4vw;
+    display: none; /* when the screen is small, the content will be hidden see media query*/
+}
+
+header nav .nav__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3em;
+}
+
+header nav .nav__header > svg {
+    width: 10rem;
+    height: 1.5rem;
+}
+
+header nav .nav__header svg {
+    fill: currentColor;
+}
+
+header nav .nav__header button {
+    width: 2rem;
+    height: 2rem;
+    border: 0.1rem solid var(--white);
+    border-radius: 50%;
+    color: var(--azalea);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+header nav .nav__header button svg {
+    width: 60%;
+    height: 60%;
+    display: block;
+}
+
+
+header nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+header nav ul li{
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+header .header__menu {
+    background-color: transparent;
+    border: none;
+    width: 1.7rem;
+    height: 0.7rem;
+    cursor: pointer;
+    color: inherit;
+    display: none;
+}
+
+@media (min-width: 1100px) {
+    header nav {
+        position: relative; 
+        background-color: transparent;
+        padding: 0;
+        color: var(--white);
+        display: block !important;
+        
+    }
+    header nav ul {
+        flex-direction: row !important;
+        justify-content: center;
+        gap: 3em !important;
+    }
+
+    header button.header__nav__menu {
+        display: none;
+    }
+
+    header .header__menu {
+        display: inline-block;
+    }
+
+    header nav .nav__header {
+        display: none;
+    }
+   
+    header nav {
+        display: block;
+    }
+}
+
+
+header .header__nav__menu {
+    background: transparent;
+    border: none;
+    font-size: 1rem;
+    color: inherit;
+    cursor: pointer;
+}
+
+header .header__menu svg {
+    background-color: var(--tuatara);
+    overflow: visible;
+    fill: currentColor;
+}
+
+/* header .header__menu:hover svg circle:nth-child(1){
+    transform: translateX(-5%);
+}
+header .header__menu:hover svg circle:nth-child(3){
+    transform: translateX(5%);
+} */
+
+/* video */
+.video {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+.video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.main_container{
+    position: relative;
+    width: 100%;
+}
+
+.main_container .below-video {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    height: 60vh;
+    width: 100%;
+    background-color: var(--light-color);
+    padding-left: 130px;
+}
+
+/* Left Video */
+.below-video #left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+#left p{
+    position: relative;
+    font-family: var(--font-normal);
+    font-size: clamp(0.8rem, 4vw, 1.5rem); /*clamp: font size that is responsive based on the viewport width*/
+    /*para: min, preferred, max*/
+    height: 30vh
+}
+
+#left .button-holder{
+    position: absolute;
+    left: 0px;
+    bottom: 100px;
+}
+
+.button-holder button{
+    padding: 5px 30px;
+    border-radius: 50px;
+    border: 1px solid var(--dark-color);
+    font-family: var(--font-nav);
+    cursor: pointer;
+}
+
+/* Right Video */
+.below-video #right{
+    position: relative;
+    display: flex;
+    align-self: center;
+    justify-self: center;
+}
+
+#right p{
+    font-size: clamp(5rem, 20vw, 13rem);
+    font-family: var(--font-nav);
+}
+
+.below-video p{
+    font-size: 2rem;
+}
+
+/* Boxes */
+.three-boxes .box-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    padding: 20px;
+}
+
+.main-container .three-boxes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+}
+
+.box-container .box{
+    margin: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.box img, .box video{
+    width: 100%;
+    height: auto;
+}
+
+.box .box-desc{
+    margin: 0 20px;
+}
+
+.box-desc a{
+    text-decoration: none;
+    color: var(--dark-color);
+    font-family: var(--font-nav);
+}
+
+.box-desc h2{
+    font-size: 1.3rem;
+    margin: 10px 0;
+}
+
+.box-desc p{
+    width: 200px;
+}
+
+.featured-title{
+    margin: 100px 125px;
+    font-family: var(--font-nav);
+    letter-spacing: 5px;
+}
+
+/* Draggable Div */
+.draggable-div{
+    overflow-x: scroll;
+    margin: 20px 0 20px 95px;
+    cursor: grab;
+    transition: all 0.4s ease;
+}
+
+.draggable-div ul{
+    display: flex;
+    width: 200%;
+    height: 240px;
+}
+
+.draggable-div li h2{
+    font-size: 2rem;
+    position: relative;
+    margin-bottom: 40px;
+    font-family: var(--font-nav);
+}
+
+.draggable-div li h2::after{
+    content: '_';
+    position: absolute;
+    bottom: -25px;
+    left: 0px;
+}
+
+.draggable-div li h3{
+    margin-bottom: 20px;
+    font-family: var(--font-normal);
+}
+
+.draggable-div ul li{
+    list-style: none;
+    margin: 0 30px;
+}
+
+.draggable-div li p{
+    font-family: var(--font-normal);
+    text-align: justify;
+    line-height: 18px;
+}
+
+.draggable-div li .drag-holder{
+    width: 350px;
+}
+
+/* Basic Dept */
+.basic-dept{
+    display: flex;
+    margin: 100px 90px;
+    font-family: var(--font-nav);
+    transform-origin: left;
+    
+}
+
+.btn-holder .about-us-btn{
+    margin: 50px 0;
+    padding: 5px 30px;
+    border-radius: 50px;
+    border: 1px solid var(--dark-color);
+    font-family: var(--font-normal);
+    font-weight: bold;
+    cursor: pointer;
+    position: relative;
+    background:linear-gradient(to right, var(--pink-color) 50%, var(--light-color) 50%);
+    background-size: 200%, 100%;
+    background-position: right bottom;
+    transition: all 0.4s ease;
+}
+
+.btn-holder .about-us-btn:hover{
+    background-position: left bottom;
+}
+
+.left-basic{
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+}
+
+.left-basic p{
+    font-size: clamp(2rem, 5vw, 5rem);
+}
+
+.basic-dept video{
+    width: 50%;
+    height: auto;
+}
+
+.main-container .featured-news{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 150px 0 90px;
+}
+
+.featured-news span{
+    width: 20%;
+}
+
+.featured-news h2{
+    font-size: clamp(1rem, 5vh, 2.5rem);
+    font-family: var(--font-nav);
+    letter-spacing: 2px;
+}
+
+/* News */
+.news-holder{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.news-holder .news-item{
+    display: flex;
+    margin: 10px 90px;
+    border-top: 1px solid var(--dark-color);
+    position: relative;
+    cursor: pointer;
+    width: 90%;
+    height: auto;
+}
+
+.news-item .img-holder{
+    width: 25rem;
+    height: auto;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+.news-item .img-holder:hover img{
+    transform: scale(1);
+}
+
+.img-holder img{
+    width: 100%;
+    height: auto;
+    transform: scale(1.1);
+    transition: transform 0.4s ease;
+}
+
+.news-item .item-desc{
+    width: 80%;
+    margin: 5px 15px;
+    position: relative;
+    height: auto;
+}
+
+.news-item .item-desc:hover{
+    text-decoration: underline;
+}
+
+.news-item .item-desc h2{
+    font-size: clamp(1rem, 3vw, 3rem);
+    font-family: var(--font-nav);
+    width: 90%;
+}
+
+.news-item .fa-arrow-right{
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 2rem;
+    transition: transform 0.3s ease;
+}
+.fa-arrow-right:hover {
+    transform: rotate(360deg);
+}
+
+.news-item p{
+    position: absolute;
+    bottom: 10px;
+    font-family: var(--font-normal);
+}
+
+.news-item p span{
+    font-weight: bold;
+}
+
+/* footer */
+.black-footer{
+    background-color: black;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.black-footer div{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-family: var(--font-nav);
+    font-size: 0.6rem;
+    color: gray;
+    height: 60px;
+}
+
+.black-footer a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.black-footer a:hover{
+    text-decoration: underline;
+}
+
+@media screen and (max-width: 1024px){
+
+    .main_container .below-video{
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        height: auto;
+    }
+
+    .below-video #right{
+        align-self: flex-end;
+    }
+
+    .below-video #left{
+        align-items:flex-start;
+    }
+
+    #left p{
+        width: 80%;
+    }
+
+    #left .button-holder{
+        bottom: 0;
+    }
+
+    .three-boxes .box-container{
+        grid-template-columns: 1fr;
+        grid-template-rows: 3fr;
+    }
+
+    .box-container .box{
+        margin: 10px;
+    }
+
+    .box img, .box video{
+        width: 50%;
+        height: auto;
+    }
+
+    .box-container .box{
+        align-items: center;
+        text-align: center;
+    }
+
+    .basic-dept{
+        display: flex;
+        align-items: center;
+        margin: 10px 5px;
+    }
+
+    .basic-dept video{
+        width: 50%;
+        height: 100%;
+    }
+
+    .left-basic p, .left-basic h3{
+        text-align: left;
+    }
+
+    .left-basic p{
+        margin-top: 10px;
+    }
+}
+
+@media screen and (max-width: 480px){
+
+    .box img, .box video{
+        width: 100%;
+        height: auto;
+    }
+
+    .featured-title,.draggable-div{
+        margin: 20px;
+    }
+
+}
+
+@media screen and (max-width: 768px){
+
+    .basic-dept{
+        flex-direction: column-reverse;
+    }
+
+    .basic-dept video{
+        width: 70%;
+        height: 100%;
+    }
+
+    .left-basic{
+        margin: 40px;
+    }
+}
+
+hr{
+    position: absolute;
+    width: 100%;
+}
+
+
+
+
+
+
+
